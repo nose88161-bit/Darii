@@ -1,20 +1,20 @@
-<meta name='viewport' content='width=device-width, initial-scale=1'/><div class="menu-container">
+<meta name='viewport' content='width=device-width, initial-scale=1'/><div class="accordion-page">
 
-  <div class="item">
+  <div class="accordion-item">
     <button class="neon-title">Emote de la bandera</button>
     <div class="image-box">
-      <img src="https://i.imgur.com/oqgIcMo.gif" alt="Emote de la bandera">
+      <img src="https://i.imgur.com/7yGY9ik.gif" alt="Emote de la bandera">
     </div>
   </div>
 
-  <div class="item">
-    <button class="neon-title">Skin especial</button>
+  <div class="accordion-item">
+    <button class="neon-title">Sensibilidad Brasilena🇧🇷</button>
     <div class="image-box">
-      <img src="https://i.imgur.com/8MAqTwB.jpeg" alt="Skin especial">
+      <img src="https://i.imgur.com/J7exSbj.gif" alt="Skin especial">
     </div>
   </div>
 
-  <div class="item">
+  <div class="accordion-item">
     <button class="neon-title">Recompensa dorada</button>
     <div class="image-box">
       <img src="https://i.imgur.com/1HE6ZFK.png" alt="Recompensa dorada">
@@ -35,13 +35,13 @@ body {
   padding: 24px;
 }
 
-.menu-container {
+.accordion-page {
   width: 100%;
   max-width: 480px;
   margin: 0 auto;
 }
 
-.item {
+.accordion-item {
   margin-bottom: 18px;
 }
 
@@ -91,11 +91,12 @@ body {
   transition:
     max-height 0.35s ease,
     opacity 0.25s ease,
-    transform 0.25s ease;
+    transform 0.25s ease,
+    margin-top 0.25s ease;
 }
 
 .image-box.show {
-  max-height: 500px;
+  max-height: 520px;
   opacity: 1;
   transform: scale(1);
   margin-top: 14px;
@@ -109,12 +110,19 @@ body {
     0 0 12px rgba(0, 255, 157, 0.35),
     0 0 26px rgba(0, 140, 255, 0.25);
 }</style><script>const titles = document.querySelectorAll('.neon-title');
+const imageBoxes = document.querySelectorAll('.image-box');
 
 titles.forEach(title => {
   title.addEventListener('click', () => {
-    const imageBox = title.nextElementSibling;
+    const currentBox = title.nextElementSibling;
+    const isAlreadyOpen = currentBox.classList.contains('show');
 
-    title.classList.toggle('active');
-    imageBox.classList.toggle('show');
+    titles.forEach(btn => btn.classList.remove('active'));
+    imageBoxes.forEach(box => box.classList.remove('show'));
+
+    if (!isAlreadyOpen) {
+      title.classList.add('active');
+      currentBox.classList.add('show');
+    }
   });
 });</script>
